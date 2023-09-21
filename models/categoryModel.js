@@ -5,7 +5,7 @@ const categorySchema = mongoose.Schema({
     description: { type: String, required: true }
 })
 
-const Category = new mongoose.model("Category" ,categorySchema)
+const Category = new mongoose.model("category" ,categorySchema)
 
 module.exports = {
     Category

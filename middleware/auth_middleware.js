@@ -8,6 +8,7 @@ const SECRET_KEY = process.env.JWT_SECRET;
 exports.authenticateToken = (req, res, next) => {
   try {
     const token = req.header('Authorization');
+    
     if (!token) {
       throw new Error('Unauthorized: Token not provided so Login First');
     }

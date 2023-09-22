@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { successResponse, errorResponse } = require("../helper/successAndError");
 const saltRounds = Number(process.env.saltRounds) || 10;
+const colors = require("colors")
 const jwtSecret = process.env.JWT_SECRET || 'masai';
 
 
@@ -23,7 +24,7 @@ async function getAllUsers(req, res) {
 async function registerUser(req, res) {
     const { name, email, password, role } = req.body;
     try {
-      const userExist = await userModel.findOne({ email: email });
+      const userExist = await User.findOne({ email: email });
   
       if (userExist) {
         return res.status(400).json({
@@ -35,8 +36,7 @@ async function registerUser(req, res) {
   
       const hashedPassword = await bcrypt.hash(password, 10);
   
-      const otp = generateOTP();
-      mainOtp = otp;
+     
   
       if (!hashedPassword) {
         return res.status(500).json({

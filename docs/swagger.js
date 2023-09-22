@@ -37,6 +37,7 @@
  *           type: string
  *           description: role of the user it will be either Customer, Seller, Admin
  *       required:
+ *         - name
  *         - email
  *         - password
  *         - role

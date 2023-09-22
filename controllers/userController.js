@@ -2,8 +2,8 @@ const { User } = require("../models/userModel");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { successResponse, errorResponse } = require("../helper/successAndError");
-const saltRounds = Number(process.env.SALT_ROUNDS) || 10;
-const jwt = process.env.JWT_SECRET || 'masai';
+const saltRounds = Number(process.env.saltRounds) || 10;
+const jwtSecret = process.env.JWT_SECRET || 'masai';
 
 
 // Getting all Users
@@ -23,7 +23,7 @@ async function getAllUsers(req, res) {
 async function registerUser(req, res) {
     try {
         // Extract user information from the request body
-        const {name, email, password } = req.body;
+        const { email, password, name, role } = req.body;
 
         // Check if the email is already registered
         const existingUser = await User.findOne({ email });
@@ -40,7 +40,7 @@ async function registerUser(req, res) {
             }
 
             // Create a new user document with hashed password
-            const newUser = new User({ name, email, password: hash });
+            const newUser = new User({ name, email, password: hash,role });
 
             // Save the new user to the database
             await newUser.save();
@@ -53,7 +53,6 @@ async function registerUser(req, res) {
         res.status(400).json({ error: "Bad request" });
     }
 }
-
 // Login User
 const loginUser = async (req, res) => {
     try {
@@ -69,7 +68,7 @@ const loginUser = async (req, res) => {
         }
 
         // Generate a JWT token
-        const token = jwt.sign({ userId: user._id }, jwt, { expiresIn: "1day" });
+        const token = jwt.sign({ userId: user._id }, jwtSecret, { expiresIn: "1day" });
 
         // Respond with a success message and the JWT token
         res.status(200).json({ message: "Login successful", token, user });
@@ -87,6 +86,5 @@ module.exports = {
     getAllUsers,
     registerUser,
     loginUser,
-    userProfile,
 };
 

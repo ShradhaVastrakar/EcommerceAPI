@@ -1,15 +1,17 @@
 const express = require("express");
 const cors = require("cors");
-const { connection } = require("mongoose");
+const { connection } = require("./configs/db");
 const app = express()
 require("dotenv").config()
 const PORT = process.env.PORT || 8080
+const {userRouter} = require("./routes/userRoute")
 
 require("dotenv").config();
 
 //middleware to parse json request bodies
 app.use(cors())
 app.use(express.json())
+
 
 // Home page Route
 app.get("/", async (req, res) => {
@@ -19,6 +21,9 @@ app.get("/", async (req, res) => {
         res.status(500).json({ error: "Internal server error" });
     }
 });
+
+// Routes (API Endpoints)
+app.use("/api/users", userRouter);
 
 
 app.listen(PORT, async () => {

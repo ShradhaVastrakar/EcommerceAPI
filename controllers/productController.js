@@ -17,10 +17,10 @@ const getAllProducts = async (req, res) => {
         data: data,
       });
     } catch (error) {
-      // Log the error and respond with a 500 status for server errors
+      // Log the error and respond with a 400 status for server errors
       console.error(colors.red("Error in getAllProducts: ", error.message));
-      res.status(500).json({
-        status: 500,
+      res.status(400).json({
+        status: 400,
         success: false,
         error: "Internal Server Error",
         message: error.message,
@@ -53,10 +53,10 @@ const getProductDetailsById = async (req, res) => {
         data: singleProductDetails,
       });
     } catch (error) {
-      // Log the error and respond with a 500 status for server errors
+      // Log the error and respond with a 400 status for server errors
       console.error(colors.red("Error in getProductDetails: ", error.message));
-      res.status(500).json({
-        status: 500,
+      res.status(400).json({
+        status: 400,
         success: false,
         error: "Internal Server Error",
         message: error.message,
@@ -91,12 +91,12 @@ const getProductByCategoryId = async (req, res) => {
         data: categorizedProducts,
       });
     } catch (error) {
-      // Log the error and respond with a 500 status for server errors
+      // Log the error and respond with a 400 status for server errors
       console.error(
         colors.red("Error in getProductsByCategory: ", error.message)
       );
-      res.status(500).json({
-        status: 500,
+      res.status(400).json({
+        status: 400,
         success: false,
         error: "Internal Server Error",
         message: error.message,
@@ -141,10 +141,10 @@ const addProduct = async (req, res) => {
         data: product,
       });
     } catch (error) {
-      // Log the error and respond with a 500 status for server errors
+      // Log the error and respond with a 400 status for server errors
       console.error(colors.red("Error in addProduct: ", error.message));
-      res.status(500).json({
-        status: 500,
+      res.status(400).json({
+        status: 400,
         success: false,
         error: "Internal Server Error",
         message: error.message,
@@ -190,10 +190,10 @@ const updateProduct = async (req, res) => {
         data: product,
       });
     } catch (error) {
-      // Log the error and respond with a 500 status for server errors
+      // Log the error and respond with a 400 status for server errors
       console.error(colors.red("Error in updateProduct: ", error.message));
-      res.status(500).json({
-        status: 500,
+      res.status(400).json({
+        status: 400,
         success: false,
         error: "Internal Server Error",
         message: error.message,
@@ -201,38 +201,6 @@ const updateProduct = async (req, res) => {
     }
   };
   
-  // Delete an existing product
-const deleteProduct = async (req, res) => {
-    try {
-      const { productId } = req.params;
-  
-      // Check if the product with the provided productId exists
-      const product = await Product.findById(productId);
-      if (!product) {
-        // Respond with a 404 status if the product is not found
-        return res.status(404).json({
-          status: 404,
-          success: false,
-          message: "Product not found",
-        });
-      }
-  
-      // Delete the product
-      await Product.findByIdAndDelete(productId);
-  
-      // Respond with a 204 status (No Content) for a successful deletion
-      return res.status(204).send();
-    } catch (error) {
-      // Log the error and respond with a 500 status for server errors
-      console.error(colors.red("Error in deleteProduct: ", error.message));
-      res.status(500).json({
-        status: 500,
-        success: false,
-        error: "Internal Server Error",
-        message: error.message,
-      });
-    }
-  };
 
 
-module.exports = { getProductByCategoryId, getProductDetailsById, addProduct, updateProduct, deleteProduct, getAllProducts };
+module.exports = { getProductByCategoryId, getProductDetailsById, addProduct, updateProduct, getAllProducts };

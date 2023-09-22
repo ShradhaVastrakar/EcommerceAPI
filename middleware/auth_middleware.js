@@ -30,3 +30,5 @@ exports.authenticateToken = (req, res, next) => {
     res.status(401).json({ error: error.message });
   }
 };
+
+// AUTHORIZATION

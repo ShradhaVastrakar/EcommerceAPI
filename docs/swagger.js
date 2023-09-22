@@ -548,34 +548,6 @@
  */
 
 
-// Delete product by product ID
-
-/**
- * @swagger
- * paths:
- *   /products/{productId}:
- *     delete:
- *       summary: Delete product by product ID
- *       tags: [Products]
- *       security:
- *          - BearerAuth: []
- *       parameters:
- *         - in: path
- *           name: productId
- *           schema:
- *             type: string
- *           required: true
- *           description: ID of the product to delete
- *       responses:
- *         204:
- *           description: Product deleted successfully
- *         404:
- *           description: Product not found
- *         500:
- *           description: Internal Server Error or Contact the administrator
- */
-
-
 // *********************** Category Routes ********************************************
 
 // Get all categories
@@ -1007,7 +979,7 @@
 /**
  * @swagger
  * paths:
- *  /cart/remove-from-cart/{userId}:
+ *  /cart/remove-from-cart/{userId}/{productId}:
  *    delete:
  *      summary: Remove items from the user's cart
  *      tags:

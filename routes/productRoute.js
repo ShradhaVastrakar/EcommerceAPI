@@ -19,7 +19,5 @@ productRouter.post('/', authenticateToken, addProduct);
 // Update product by product ID
 productRouter.put('/:productId', authenticateToken, updateProduct);
 
-// Delete product by product ID
-productRouter.delete('/:productId', authenticateToken, deleteProduct);
 
 module.exports = { productRouter };

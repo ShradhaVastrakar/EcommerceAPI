@@ -70,10 +70,10 @@ exports.createCategory = async (req, res) => {
     });
   } catch (error) {
     console.error(colors.red("Error in createCategory: ", error.message));
-    res.status(500).json({
-      status: 500,
+    res.status(400).json({
+      status: 400,
       success: false,
-      error: "Internal Server Error",
+      error: "Bad Request",
       message: error.message,
     });
   }
@@ -107,10 +107,10 @@ exports.updateCategory = async (req, res) => {
     });
   } catch (error) {
     console.error(colors.red("Error in updateCategory: ", error.message));
-    res.status(500).json({
-      status: 500,
+    res.status(400).json({
+      status: 400,
       success: false,
-      error: "Internal Server Error",
+      error: "Bad Request",
       message: error.message,
     });
   }

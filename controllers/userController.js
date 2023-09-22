@@ -35,9 +35,7 @@ async function registerUser(req, res) {
       }
   
       const hashedPassword = await bcrypt.hash(password, 10);
-  
-     
-  
+
       if (!hashedPassword) {
         return res.status(500).json({
           status: 500,

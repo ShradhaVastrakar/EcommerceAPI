@@ -34,14 +34,6 @@ app.get("/", async (req, res) => {
     }
 });
 
-// Routes (API Endpoints)
-app.use("/api/users", userRouter);
-app.use("/api/products", productRouter);
-app.use("/api/categories", categoryRouter);
-app.use("/api/cart", cartRouter);
-app.use("/api/orders", orderRouter);
-
-
 // **************************SWAGGER*****************************
 
 const options = {
@@ -63,6 +55,16 @@ const options = {
 };
 const specs = swaggerJsDoc(options);
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
+
+
+// Routes (API Endpoints)
+app.use("/api/users", userRouter);
+app.use("/api/products", productRouter);
+app.use("/api/categories", categoryRouter);
+app.use("/api/cart", cartRouter);
+app.use("/api/orders", orderRouter);
+
+
 
 app.listen(PORT, async () => {
   try {

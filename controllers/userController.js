@@ -21,36 +21,48 @@ async function getAllUsers(req, res) {
 
 //Registering all Users
 async function registerUser(req, res) {
+    const { name, email, password, role } = req.body;
     try {
-        // Extract user information from the request body
-        const { email, password, name, role } = req.body;
-
-        // Check if the email is already registered
-        const existingUser = await User.findOne({ email });
-        if (existingUser) {
-            // Email is already registered
-            return res.status(400).json({ error: "Email already registered, Use different email or Login" });
-        }
-
-        // Hash the password using bcrypt
-        bcrypt.hash(password, saltRounds, async (err, hash) => {
-            if (err) {
-                // Handle password hashing error
-                return res.status(500).json({ error: "Password hashing failed" });
-            }
-
-            // Create a new user document with hashed password
-            const newUser = new User({ name, email, password: hash,role });
-
-            // Save the new user to the database
-            await newUser.save();
-
-            // Respond with a success message
-            res.status(201).json({ success: `${name} has been registered successfully with _Id-${newUser._id}` });
+      const userExist = await userModel.findOne({ email: email });
+  
+      if (userExist) {
+        return res.status(400).json({
+          status: 400,
+          success: false,
+          message: "User already exists",
         });
+      }
+  
+      const hashedPassword = await bcrypt.hash(password, 10);
+  
+      const otp = generateOTP();
+      mainOtp = otp;
+  
+      if (!hashedPassword) {
+        return res.status(500).json({
+          status: 500,
+          success: false,
+          message: "Error in hashing password",
+        });
+      }
+  
+      const userData = new User({
+        name,
+        email,
+        password: hashedPassword,
+        role,
+      });
+      await userData.save();
+  
+      return res.status(201).json({
+        status: 201,
+        success: true,
+        message: "Registration successful",
+        data: userData,
+      });
     } catch (error) {
-        // Handle bad request
-        res.status(400).json({ error: "Bad request" });
+      console.error(colors.red("Error: ", error.message));
+      res.status(500).json({ status: 500, error: "Registration failed" });
     }
 }
 // Login User

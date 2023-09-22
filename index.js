@@ -10,6 +10,7 @@ const { productRouter } = require("./routes/productRoute");
 const { categoryRouter } = require("./routes/categoryRoute");
 const { cartRouter } = require("./routes/cartRoute");
 const { orderRouter } = require("./routes/orderRoute");
+const { requestLoggerMiddleware } = require("./middleware/loggerMiddleware")
 
 const swaggerUI = require("swagger-ui-express");
 const swaggerJsDoc = require("swagger-jsdoc");
@@ -23,6 +24,7 @@ const { authenticateToken } = require("./middleware/auth_middleware");
 //middleware to parse json request bodies
 app.use(cors())
 app.use(express.json())
+app.use(requestLoggerMiddleware);
 
 
 // Home page Route
@@ -61,11 +63,13 @@ app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
 
 
 // Routes (API Endpoints)
+
 app.use("/api/users", userRouter);
 app.use("/api/products", productRouter);
 app.use("/api/categories", categoryRouter);
 app.use("/api/cart", cartRouter);
 app.use("/api/orders", orderRouter);
+
 
 
 

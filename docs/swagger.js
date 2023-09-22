@@ -240,7 +240,7 @@
  *                       name: Example Kumar
  *                       email: example123@gmail.com
  *                       password: $2b$1Fwo6wgApNDpTVQju1RpVux6b5Ql1U/jUI0cc6B1Z7UGZ9VFpmTUK
- *                       role: Customer, Seller, Admin
+ *                       role: ROLE_USER, ROLE_ADMIN
  *                       _id: 64f4c625a9b674bd4bb6bc8e
  *                       createdAt: 2023-09-03T17:45:09.734Z
  *                       updatedAt: 2023-09-03T17:45:09.734Z

@@ -60,10 +60,10 @@ const colors = require('colors');
       });
     } catch (error) {
       console.error('Error in placeOrder: ', error.message);
-      res.status(500).json({
-        status: 500,
+      res.status(400).json({
+        status: 400,
         success: false,
-        error: 'Internal Server Error',
+        error: 'Bad Request',
         message: error.message,
       });
     }
@@ -86,10 +86,10 @@ exports.getOrderHistory = async (req, res) => {
     });
   } catch (error) {
     console.error(colors.red('Error in getOrderHistory: ', error.message));
-    res.status(500).json({
-      status: 500,
+    res.status(400).json({
+      status: 400,
       success: false,
-      error: 'Internal Server Error',
+      error: 'Bad Request',
       message: error.message,
     });
   }
@@ -119,10 +119,10 @@ exports.getOrderDetails = async (req, res) => {
     });
   } catch (error) {
     console.error(colors.red('Error in getOrderDetails: ', error.message));
-    res.status(500).json({
-      status: 500,
+    res.status(400).json({
+      status: 400,
       success: false,
-      error: 'Internal Server Error',
+      error: 'Bad Request',
       message: error.message,
     });
   }
@@ -157,10 +157,10 @@ exports.updateOrderStatus = async (req, res) => {
     });
   } catch (error) {
     console.error(colors.red('Error in updateOrderStatus: ', error.message));
-    res.status(500).json({
-      status: 500,
+    res.status(400).json({
+      status: 400,
       success: false,
-      error: 'Internal Server Error',
+      error: 'Bad Request',
       message: error.message,
     });
   }

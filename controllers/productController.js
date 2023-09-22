@@ -22,7 +22,7 @@ const getAllProducts = async (req, res) => {
       res.status(400).json({
         status: 400,
         success: false,
-        error: "Internal Server Error",
+        error: "Bad Request",
         message: error.message,
       });
     }
@@ -58,7 +58,7 @@ const getProductDetailsById = async (req, res) => {
       res.status(400).json({
         status: 400,
         success: false,
-        error: "Internal Server Error",
+        error: "Bad Request",
         message: error.message,
       });
     }
@@ -98,7 +98,7 @@ const getProductByCategoryId = async (req, res) => {
       res.status(400).json({
         status: 400,
         success: false,
-        error: "Internal Server Error",
+        error: "Bad Request",
         message: error.message,
       });
     }
@@ -146,7 +146,7 @@ const addProduct = async (req, res) => {
       res.status(400).json({
         status: 400,
         success: false,
-        error: "Internal Server Error",
+        error: "Bad Request",
         message: error.message,
       });
     }
@@ -195,7 +195,7 @@ const updateProduct = async (req, res) => {
       res.status(400).json({
         status: 400,
         success: false,
-        error: "Internal Server Error",
+        error: "Bad Request",
         message: error.message,
       });
     }

@@ -16,7 +16,7 @@ async function getAllUsers(req, res) {
         res.status(200).json(successResponse(201, "Retrieved all Users successfully", users));
     } catch (error) {
         // Handle server error
-        res.status(500).json(errorResponse(500, "Error Fetching User"));
+        res.status(400).json(errorResponse(400, "Error Fetching User"));
     }
 }
 
@@ -37,8 +37,8 @@ async function registerUser(req, res) {
       const hashedPassword = await bcrypt.hash(password, 10);
 
       if (!hashedPassword) {
-        return res.status(500).json({
-          status: 500,
+        return res.status(400).json({
+          status: 400,
           success: false,
           message: "Error in hashing password",
         });
@@ -60,7 +60,7 @@ async function registerUser(req, res) {
       });
     } catch (error) {
       console.error(colors.red("Error: ", error.message));
-      res.status(500).json({ status: 500, error: "Registration failed" });
+      res.status(400).json({ status: 400, error: "Registration failed" });
     }
 }
 // Login User
@@ -84,7 +84,7 @@ const loginUser = async (req, res) => {
         res.status(200).json({ message: "Login successful", token, user });
     } catch (error) {
         // Handle server error
-        res.status(500).json({ error: "Internal server error" });
+        res.status(400).json({ error: "Bad Request" });
     }
 }
 

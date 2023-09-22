@@ -14,10 +14,10 @@ exports.allCategories = async (req, res) => {
     });
   } catch (error) {
     console.error(colors.red("Error in allCategories: ", error.message));
-    res.status(500).json({
-      status: 500,
+    res.status(400).json({
+      status: 400,
       success: false,
-      error: "Internal Server Error",
+      error: "Bad Request",
       message: error.message,
     });
   }
@@ -45,10 +45,10 @@ exports.getCategoryByCategoryId = async (req, res) => {
     });
   } catch (error) {
     console.error(colors.red("Error in getCategoryByCategoryId: ", error.message));
-    res.status(500).json({
-      status: 500,
+    res.status(400).json({
+      status: 400,
       success: false,
-      error: "Internal Server Error",
+      error: "Bad Request",
       message: error.message,
     });
   }
@@ -135,10 +135,10 @@ exports.deleteCategory = async (req, res) => {
     return res.status(204).send();
   } catch (error) {
     console.error(colors.red("Error in deleteCategory: ", error.message));
-    res.status(500).json({
-      status: 500,
+    res.status(400).json({
+      status: 400,
       success: false,
-      error: "Internal Server Error",
+      error: "Bad Request",
       message: error.message,
     });
   }

@@ -61,10 +61,10 @@ exports.addToCart = async (req, res) => {
     });
   } catch (error) {
     console.error("Error in addToCart: ", error.message);
-    res.status(500).json({
-      status: 500,
+    res.status(400).json({
+      status: 400,
       success: false,
-      error: "Internal Server Error",
+      error: "Bad Request",
       message: error.message,
     });
   }
@@ -110,10 +110,10 @@ exports.viewCart = async (req, res) => {
       });
     }
 
-    res.status(500).json({
-      status: 500,
+    res.status(400).json({
+      status: 400,
       success: false,
-      error: 'Internal Server Error',
+      error: 'Bad Request',
       message: error.message,
     });
   }
@@ -172,10 +172,10 @@ exports.updateCart = async (req, res) => {
     });
   } catch (error) {
     console.error("Error in updateCart: ", error.message);
-    res.status(500).json({
-      status: 500,
+    res.status(400).json({
+      status: 400,
       success: false,
-      error: "Internal Server Error",
+      error: "Bad Request",
       message: error.message,
     });
   }
@@ -215,10 +215,10 @@ exports.removeFromCart = async (req, res) => {
     });
   } catch (error) {
     console.error("Error in removeFromCart: ", error.message);
-    res.status(500).json({
-      status: 500,
+    res.status(400).json({
+      status: 400,
       success: false,
-      error: "Internal Server Error",
+      error: "Bad Request",
       message: error.message,
     });
   }

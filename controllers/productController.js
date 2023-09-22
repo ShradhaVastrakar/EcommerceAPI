@@ -68,11 +68,11 @@ const getProductDetailsById = async (req, res) => {
 const getProductByCategoryId = async (req, res) => {
     try {
       const { categoryId } = req.params;
-  
+    //  console.log(categoryId)
       // Find products by category ID and populate category details
       const categorizedProducts = await Product
-        .find({ category: categoryId })
-        .populate("category");
+        .find({ categoryId })
+        .populate("categoryId");
   
       if (!categorizedProducts.length) {
         // Respond with a 404 status if no products are found
@@ -112,7 +112,7 @@ const addProduct = async (req, res) => {
       
       // Check if the specified category exists
       const category = await Category.findById(categoryId);
-  
+
       if (!category) {
         // Respond with a 404 status if the category is not found
         return res.status(404).json({
@@ -129,7 +129,7 @@ const addProduct = async (req, res) => {
         price,
         description,
         availability,
-        category: categoryId,
+        categoryId: category,
       });
       await product.save();
   

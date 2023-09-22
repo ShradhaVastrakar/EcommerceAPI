@@ -4,9 +4,17 @@ const { connection } = require("./configs/db");
 const app = express()
 require("dotenv").config()
 const PORT = process.env.PORT || 8080
-const {userRouter} = require("./routes/userRoute")
+const { userRouter } = require("./routes/userRoute");
+const { productRouter } = require("./routes/productRoute");
+const { categoryRouter } = require("./routes/categoryRoute");
+const { cartRouter } = require("./routes/cartRoute");
+const { orderRouter } = require("./routes/orderRoute");
+
 
 require("dotenv").config();
+
+// Middleware Location
+const { authenticateToken } = require("./middleware/auth_middleware");
 
 //middleware to parse json request bodies
 app.use(cors())
@@ -24,7 +32,10 @@ app.get("/", async (req, res) => {
 
 // Routes (API Endpoints)
 app.use("/api/users", userRouter);
-
+app.use("/api/products", productRouter);
+app.use("/api/categories", categoryRouter);
+app.use("/api/cart", cartRouter);
+app.use("/api/orders", orderRouter);
 
 app.listen(PORT, async () => {
   try {

@@ -14,4 +14,4 @@ userRouter.post('/register', registerUser);
 // Log in user
 userRouter.post('/login', loginUser);
 
-module.exports = {userRouter};
+module.exports = { userRouter };

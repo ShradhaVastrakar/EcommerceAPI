@@ -1,4 +1,4 @@
-const { Category } = require('../models/Category');
+const { Category } = require('../models/categoryModel');
 const colors = require('colors');
 
 // Get all categories
@@ -83,7 +83,7 @@ exports.createCategory = async (req, res) => {
 exports.updateCategory = async (req, res) => {
   try {
     const { categoryId } = req.params;
-    const { name } = req.body;
+    const { name, description } = req.body;
 
     const category = await Category.findByIdAndUpdate(
       categoryId,

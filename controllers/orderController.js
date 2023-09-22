@@ -9,10 +9,11 @@ const { Cart } = require('../models/cartModel');
 const colors = require('colors');
 
 // Place an order
-exports.placeOrder = async (req, res) => {
+
+  exports.placeOrder = async (req, res) => {
     try {
-      const userId = req.userId; // Get the user ID from the authenticated token
-  
+      const { userId } = req.params; // Get the user ID from the authenticated token
+ 
       // Find the user's cart
       const userCart = await Cart.findOne({ user: userId }).populate('items.product');
   
@@ -29,10 +30,7 @@ exports.placeOrder = async (req, res) => {
         return total + item.product.price * item.quantity;
       }, 0);
   
-      // Fetch user data, including email
-      const userData = await User.findById(userId); // Assuming you have a User for storing user data
-  
-      // Create a new order
+      // Create a new order with the status 'Pending'
       const order = new Order({
         user: userId,
         items: userCart.items.map((item) => ({
@@ -40,6 +38,7 @@ exports.placeOrder = async (req, res) => {
           quantity: item.quantity,
         })),
         total: orderTotal,
+        status: 'Pending',  // Set the initial status as 'Pending'
       });
   
       // Save the order to the database
@@ -49,29 +48,9 @@ exports.placeOrder = async (req, res) => {
       userCart.items = [];
       await userCart.save();
   
-    //   // Send an order confirmation email
-    //   const emailData = {
-    //     email: userData.email,
-    //     subject: 'Order Confirmation - Triveous Ecommerce',
-    //     body: `
-    //       <html>
-    //         <body style="font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px;">
-    //           <h2>Order Confirmation</h2>
-    //           <p>Dear ${userData.name},</p>
-    //           <p>Your order has been successfully placed with Triveous Ecommerce. Below are the order details:</p>
-    //           <ul>
-    //             <!-- Include order details here, such as order ID, products, total amount, etc. -->
-    //           </ul>
-    //           <p>Thank you for shopping with us!</p>
-    //           <p>Best regards,</p>
-    //           <p>The Triveous Ecommerce Team</p>
-    //         </body>
-    //       </html>
-    //     `,
-    //   };
-  
-    //   // Send the order confirmation email
-    //   sendEmail(emailData);
+      // Update the status to 'Delivered'
+      order.status = 'Delivered';
+      await order.save();
   
       return res.status(201).json({
         status: 201,
@@ -80,7 +59,7 @@ exports.placeOrder = async (req, res) => {
         data: order,
       });
     } catch (error) {
-      console.error(colors.red('Error in placeOrder: ', error.message));
+      console.error('Error in placeOrder: ', error.message);
       res.status(500).json({
         status: 500,
         success: false,
@@ -88,12 +67,13 @@ exports.placeOrder = async (req, res) => {
         message: error.message,
       });
     }
-};
+  };
+
   
 // Get order history for an authenticated user
 exports.getOrderHistory = async (req, res) => {
   try {
-    const userId = req.userId; // Get the user ID from the authenticated token
+    const {userId} = req.params; // Get the user ID from the authenticated token
 
     // Find all orders for the user
     const orders = await Order.find({ user: userId }).populate('items.product');

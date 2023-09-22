@@ -123,11 +123,11 @@ exports.viewCart = async (req, res) => {
 exports.updateCart = async (req, res) => {
   try {
     const { items } = req.body;
-    const {userId} = req.params;
+    const {userId} = req.params; // Assuming userId is a parameter in the URL 
 
     // Find the user's cart
     const userCart = await Cart.findOne({ user: userId });
-
+   console.log(userCart)
     if (!userCart) {
       return res.status(404).json({
         status: 404,
@@ -137,14 +137,29 @@ exports.updateCart = async (req, res) => {
     }
 
     // Update quantities of items in the cart
-    items.forEach((updatedItem) => {
+    for (const updatedItem of items) {
       const cartItem = userCart.items.find(
-        (item) => item.product.toString() === updatedItem.productId
+        (item) => item.product.toString() === updatedItem.product
       );
       if (cartItem) {
-        cartItem.quantity = updatedItem.quantity;
+        // Ensure the updated quantity is valid
+        if (updatedItem.quantity > 0) {
+          cartItem.quantity = updatedItem.quantity;
+        } else {
+          return res.status(400).json({
+            status: 400,
+            success: false,
+            message: "Invalid quantity for item",
+          });
+        }
+      } else {
+        return res.status(404).json({
+          status: 404,
+          success: false,
+          message: `Item with product ID ${updatedItem.productId} not found in the cart`,
+        });
       }
-    });
+    }
 
     // Save the updated cart
     await userCart.save();
@@ -156,7 +171,7 @@ exports.updateCart = async (req, res) => {
       data: userCart,
     });
   } catch (error) {
-    console.error(colors.red("Error in updateCart: ", error.message));
+    console.error("Error in updateCart: ", error.message);
     res.status(500).json({
       status: 500,
       success: false,
@@ -166,11 +181,12 @@ exports.updateCart = async (req, res) => {
   }
 };
 
+
 // Remove items from the user's cart
 exports.removeFromCart = async (req, res) => {
   try {
     const { productId } = req.params;
-    const userId = req.userId; // Get the user ID from the authenticated token
+    const { userId } = req.params; // Get the user ID from the authenticated token
 
     // Find the user's cart
     const userCart = await Cart.findOne({ user: userId });
@@ -198,7 +214,7 @@ exports.removeFromCart = async (req, res) => {
       data: userCart,
     });
   } catch (error) {
-    console.error(colors.red("Error in removeFromCart: ", error.message));
+    console.error("Error in removeFromCart: ", error.message);
     res.status(500).json({
       status: 500,
       success: false,
@@ -207,3 +223,4 @@ exports.removeFromCart = async (req, res) => {
     });
   }
 };
+

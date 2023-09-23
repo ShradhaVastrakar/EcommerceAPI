@@ -957,7 +957,7 @@
 /**
  * @swagger
  * paths:
- *  /cart/remove-from-cart/{userId}/{productId}:
+ *  /cart/remove-from-cart/{productId}:
  *    delete:
  *      summary: Remove items from the user's cart
  *      tags:

@@ -14,6 +14,6 @@ cartRouter.get('/view-cart/:userId',authenticateToken, cartController.viewCart);
 cartRouter.patch('/update-cart/:userId',authenticateToken, cartController.updateCart);
 
 // Remove from Cart
-cartRouter.delete('/remove-from-cart/:userId/:productId',authenticateToken, cartController.removeFromCart);
+cartRouter.delete('/remove-from-cart/:productId',authenticateToken, cartController.removeFromCart);
 
 module.exports = { cartRouter };

@@ -4,6 +4,8 @@
 ├── index.js
 ├── configs
 |    └── db.js
+├── logger
+|    └── path.txt
 ├── models
 |    └── userModel.js
 |    └── productModel.js

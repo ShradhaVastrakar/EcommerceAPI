@@ -63,12 +63,13 @@ app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
 
 
 // Routes (API Endpoints)
-// app.use(requestLoggerMiddleware);
+app.use(requestLoggerMiddleware);
 app.use("/api/users", userRouter);
 app.use("/api/products", productRouter);
 app.use("/api/categories", categoryRouter);
 app.use("/api/cart", cartRouter);
 app.use("/api/orders", orderRouter);
+
 
 
 

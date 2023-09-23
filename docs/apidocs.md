@@ -348,3 +348,11 @@ Update the status of a specific order by its ID.
 
 - Status Code: 200 OK
 - Response Body: Message indicating the order status has been updated.
+
+### Logger MIddleware
+
+- Each and every route will be logged in path.txt file when the user hit any API.
+
+### Admin Credential to visit forbidden sites
+- email: "shradha@gmail.com"
+- password: "123"

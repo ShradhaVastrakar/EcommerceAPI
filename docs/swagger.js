@@ -957,7 +957,7 @@
 /**
  * @swagger
  * paths:
- *  /cart/remove-from-cart/{productId}:
+ *  /cart/remove-from-cart/{userId}/{productId}:
  *    delete:
  *      summary: Remove items from the user's cart
  *      tags:
@@ -965,6 +965,8 @@
  *      parameters:
  *        - in: path
  *          name: userId
+ *        - in: path
+ *          name: productId
  *          schema:
  *            type: string
  *          required: true

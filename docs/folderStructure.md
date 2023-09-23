@@ -26,6 +26,8 @@
 |    └── orderController.js
 ├──middleware
 |    └── auth_middleware.js
+|    └── authorization.js
+|    └── loggerMiddleware.js
 ├──helper
 |    └── successAndError.js
 ├──docs

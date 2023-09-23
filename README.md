@@ -20,7 +20,7 @@ Triveous Ecommerce API is the server-side component of our robust e-commerce pla
 Our Triveous Ecommerce Backend API offers a comprehensive set of features to drive your e-commerce platform:
 
 - **User Management:**
-  - User registration with email verification.
+  - User registration.
   - Secure user authentication using JSON Web Tokens (JWT).
 
 - **Category and Product Management:**
@@ -34,7 +34,6 @@ Our Triveous Ecommerce Backend API offers a comprehensive set of features to dri
 - **Order Processing:**
   - Place orders with automatic calculation of order totals.
   - Order history and order details retrieval.
-  - Send email confirmations for order placements and updates.
 
 - **Error Handling:**
   - Robust error handling and validation for data integrity.

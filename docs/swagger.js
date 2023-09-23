@@ -37,7 +37,7 @@
  *           description: Password of the user
  *         role:
  *           type: string
- *           description: role of the user it will be either Customer, Seller, Admin
+ *           description: role of the user it will be either ROLE_USER, ROLE_ADMIN
  *       required:
  *         - name
  *         - email
@@ -47,7 +47,7 @@
  *         name: shradha
  *         email: shradha@gmail.com 
  *         password: 123
- *         role: Customer
+ *         role: ROLE_ADMIN
  */
 
 // ************************* Products Schema *************************************

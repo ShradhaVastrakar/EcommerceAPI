@@ -118,3 +118,7 @@ We maintain a clean and organized folder structure for easy navigation and devel
 ### Admin Credential to visit forbidden sites
 - email: "shradha@gmail.com"
 - password: "123"
+
+### Deployment 
+- Backend Deployed on AWS,  Click on the link to go to the deployed site
+- http://52.22.2.243:8080/

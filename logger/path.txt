@@ -1,0 +1,41 @@
+Route Visited : / | Method : GET | ResponseTime : 10 ms 
+Route Visited : /getAllUser | Method : GET | ResponseTime : 5 ms 
+Route Visited : / | Method : GET | ResponseTime : 6 ms 
+Route Visited : /getAllUser | Method : GET | ResponseTime : 3 ms 
+Route Visited : /getAllUser | Method : GET | ResponseTime : 3 ms 
+Route Visited : /getAllUser | Method : GET | ResponseTime : 3 ms 
+Route Visited : /getAllUser | Method : GET | ResponseTime : 4 ms 
+Route Visited : /login | Method : POST | ResponseTime : 4 ms 
+Route Visited : /getAllUser | Method : GET | ResponseTime : 4 ms 
+Route Visited: /getAllUser | Method: GET | ResponseTime: 73 ms
+Route Visited: /register | Method: POST | ResponseTime: 255 ms
+Route Visited: /login | Method: POST | ResponseTime: 172 ms
+Route Visited: /register | Method: POST | ResponseTime: 413 ms
+Route Visited: /register | Method: POST | ResponseTime: 193 ms
+Route Visited: /login | Method: POST | ResponseTime: 163 ms
+Route Visited: /login | Method: POST | ResponseTime: 23 ms
+Route Visited: /api/users/getAllUser | Method: POST | ResponseTime: 40 ms
+Route Visited: /api/users/getAllUser | Method: POST | ResponseTime: 3 ms
+Route Visited: /getAllUser | Method: GET | ResponseTime: 110 ms
+Route Visited: /login | Method: POST | ResponseTime: 314 ms
+Route Visited: /getAllUser | Method: GET | ResponseTime: 3 ms
+Route Visited: /getAllUser | Method: GET | ResponseTime: 9 ms
+Route Visited: /getAllUser | Method: GET | ResponseTime: 1 ms
+Route Visited: /getAllUser | Method: GET | ResponseTime: 12 ms
+Route Visited: /getAllUser | Method: GET | ResponseTime: 15 ms
+Route Visited: /getAllUser | Method: GET | ResponseTime: 19 ms
+Route Visited: /getAllUser | Method: GET | ResponseTime: 10 ms
+Route Visited: /getAllUser | Method: GET | ResponseTime: 9 ms
+Route Visited: /getAllUser | Method: GET | ResponseTime: 3 ms
+Route Visited: /getAllUser | Method: GET | ResponseTime: 10 ms
+Route Visited: /getAllUser | Method: GET | ResponseTime: 2 ms
+Route Visited: /getAllUser | Method: GET | ResponseTime: 2 ms
+Route Visited: /getAllUser | Method: GET | ResponseTime: 1 ms
+Route Visited: /getAllUser | Method: GET | ResponseTime: 2 ms
+Route Visited: /getAllUser | Method: GET | ResponseTime: 1 ms
+Route Visited: /getAllUser | Method: GET | ResponseTime: 1 ms
+Route Visited: /api/users/getAllUse | Method: GET | ResponseTime: 2 ms
+Route Visited: /getAllUser | Method: GET | ResponseTime: 1 ms
+Route Visited: /login | Method: POST | ResponseTime: 234 ms
+Route Visited: /getAllUser | Method: GET | ResponseTime: 14 ms
+Route Visited: /getAllUser | Method: GET | ResponseTime: 10 ms

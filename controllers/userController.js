@@ -9,9 +9,11 @@ const jwtSecret = process.env.JWT_SECRET || 'masai';
 
 // Getting all Users
 async function getAllUsers(req, res) {
+  console.log("get")
     try {
         // Retrieve all users from the database
         const users = await User.find();
+        console.log(users)
         // Respond with the list of users
         res.status(200).json(successResponse(201, "Retrieved all Users successfully", users));
     } catch (error) {

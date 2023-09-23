@@ -24,7 +24,7 @@ const { authenticateToken } = require("./middleware/auth_middleware");
 //middleware to parse json request bodies
 app.use(cors())
 app.use(express.json())
-app.use(requestLoggerMiddleware);
+
 
 
 // Home page Route
@@ -63,7 +63,7 @@ app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
 
 
 // Routes (API Endpoints)
-
+// app.use(requestLoggerMiddleware);
 app.use("/api/users", userRouter);
 app.use("/api/products", productRouter);
 app.use("/api/categories", categoryRouter);

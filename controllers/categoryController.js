@@ -116,30 +116,4 @@ exports.updateCategory = async (req, res) => {
   }
 };
 
-// Delete category by Id
-exports.deleteCategory = async (req, res) => {
-  try {
-    const { categoryId } = req.params;
-    const category = await Category.findById(categoryId);
 
-    if (!category) {
-      return res.status(404).json({
-        status: 404,
-        success: false,
-        message: "Category not found",
-      });
-    }
-
-    await Category.findByIdAndDelete(categoryId);
-
-    return res.status(204).send();
-  } catch (error) {
-    console.error(colors.red("Error in deleteCategory: ", error.message));
-    res.status(400).json({
-      status: 400,
-      success: false,
-      error: "Bad Request",
-      message: error.message,
-    });
-  }
-};

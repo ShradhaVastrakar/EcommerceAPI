@@ -1,6 +1,6 @@
 // ----------------------------->>>>>>> Schemas <<<<<<<-----------------------------
 
-// ---------------------*********** Authorization Schema ***********---------------------
+// ---------------------*********** Authentication Schema ***********---------------------
 /**
  * @swagger
  * components:
@@ -11,6 +11,8 @@
  *       name: Authorization
  *       description: Bearer token authorization header
 */
+
+
 
 // ************************* Users Schema *************************************
 
@@ -555,10 +557,12 @@
 /**
  * @swagger
  * paths:
- *   /categories:
+ *   /categories/:
  *     get:
  *       summary: Get all categories
  *       tags: [Categories]
+ *       security:
+ *          - BearerAuth: []
  *       responses:
  *         '200':
  *           description: All categories retrieved successfully
@@ -675,32 +679,6 @@
  *           description: Internal Server Error or Contact the administrator
  */
 
-// Delete category by category ID
-
-/**
- * @swagger
- * paths:
- *   /categories/{categoryId}:
- *     delete:
- *       summary: Delete category by category ID
- *       tags: [Categories]
- *       security:
- *          - BearerAuth: []
- *       parameters:
- *         - in: path
- *           name: categoryI
- *           schema:
- *             type: string
- *           required: true
- *           description: ID of the category to delete
- *       responses:
- *         204:
- *           description: Category deleted successfully
- *         404:
- *           description: Category not found
- *         500:
- *           description: Internal Server Error or Contact the administrator
- */
 
 
 

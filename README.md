@@ -116,3 +116,6 @@ Our API is thoroughly documented to help you integrate the backend with your fro
 
 We maintain a clean and organized folder structure for easy navigation and development. Get familiar with it in the [Folder Structure](docs/folderStructure.md) document.
 
+### Admin Credential to visit forbidden sites
+- email: "shradha@gmail.com"
+- password: "123"

@@ -49,7 +49,7 @@ const options = {
     },
     servers: [
       {
-        url: "http://localhost:8080/api"
+        url: "https://ecommerceapi-d6pa.onrender.com/api"
       }
     ],
   },

@@ -107,7 +107,7 @@ Our API is thoroughly documented to help you integrate the backend with your fro
 
 <br>
 
-### Swagger API Docs :  <a href="http://52.22.2.243:8080/api-docs">click here</a>
+### Swagger API Docs :  <a href="https://ecommerceapi-d6pa.onrender.com/api-docs">click here</a>
 
 <br>
 

@@ -8,7 +8,7 @@ const { authorization } = require("../middleware/authorization")
 const categoryRouter = express.Router();
 
 // Get all categories
-categoryRouter.get('/',authorization,  categoryController.allCategories);
+categoryRouter.get('/',  categoryController.allCategories);
 
 // Get category by Id
 categoryRouter.get('/:categoryId', authenticateToken, categoryController.getCategoryByCategoryId);
